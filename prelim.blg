@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: prelim.aux
+The style file: abbrvnat.bst
+Database file #1: Deconvolution.bib
+Database file #2: other.bib
+Warning--empty year in latin
+Warning--empty journal in Blei2003
+Warning--empty journal in Brunet2004
+Warning--empty journal in ComICS2016
+Warning--there's a number but no volume in ComICS2016
+Warning--empty journal in Gaujoux2013
+Warning--empty journal in Hubbell2002
+Warning--empty journal in Irizarry2003
+Warning--empty journal in lee2000
+Warning--empty journal in Pascual-montano2006
+Warning--empty journal in Ritchie2015
+Warning--empty journal in R2016
+You've used 27 entries,
+            2773 wiz_defined-function locations,
+            814 strings with 11646 characters,
+and the built_in function-call counts, 15491 in all, are:
+= -- 1365
+> -- 1184
+< -- 9
++ -- 396
+- -- 369
+* -- 1441
+:= -- 2477
+add.period$ -- 117
+call.type$ -- 27
+change.case$ -- 204
+chr.to.int$ -- 27
+cite$ -- 66
+duplicate$ -- 563
+empty$ -- 1018
+format.name$ -- 406
+if$ -- 3139
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 26
+newline$ -- 179
+num.names$ -- 108
+pop$ -- 355
+preamble$ -- 1
+purify$ -- 177
+quote$ -- 0
+skip$ -- 479
+stack$ -- 0
+substring$ -- 479
+swap$ -- 31
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 297
+warning$ -- 12
+while$ -- 119
+width$ -- 0
+write$ -- 416
+(There were 12 warnings)

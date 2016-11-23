@@ -1,0 +1,61 @@
+#! /usr/bin/env Rscript
+library('knitr')
+fname = "prelim"
+tex_fname = paste(fname,".tex",sep="")
+aux_fname = paste(fname,".aux",sep="")
+log_fname = paste(fname,".log",sep="")
+rnw_fname = paste(fname,".Rnw",sep="")
+
+oldmt = file.info(dir(recursive=TRUE))[,"mtime",drop=FALSE]
+
+while(TRUE){
+
+    old_files = rownames(oldmt)
+    old_files = old_files[grepl(".Rnw$",old_files)]
+
+    mt = file.info(dir(recursive=TRUE))[,"mtime",drop=FALSE]
+    updt = any(mt[old_files,,drop=FALSE] > oldmt[old_files,,drop=FALSE])
+
+    if(updt){
+        cat(format(Sys.time()),"\n")
+        cat("Running LaTex.\n")
+
+        toss = knit(rnw_fname)
+	toss = system(paste("rm",aux_fname),intern=TRUE)
+        toss = system(paste("pdflatex -interaction=batchmode",tex_fname),intern=TRUE)
+        toss = system(paste("bibtex",aux_fname),intern=TRUE)
+        toss = system(paste("pdflatex -interaction=batchmode",tex_fname),intern=TRUE)
+        toss = system(paste("pdflatex -interaction=batchmode",tex_fname),intern=TRUE)
+
+        out = system(paste("grep \"!\"",log_fname))
+
+        Rnw_files = rownames(oldmt)
+        Rnw_files = old_files[grepl(".Rnw$",old_files)]
+        toss = sapply(Rnw_files,purl)
+        print(Rnw_files)
+
+        R_files = rownames(oldmt)
+        R_files = old_files[grepl(".R$",old_files)]
+        print(R_files)
+        
+	if(out == 1){
+            cat("OK\n")
+            } else {
+            cat("ERROR\n")
+            }
+        cat("==========")
+    } else {
+        #cat("Waiting.")
+    }
+    
+    oldmt = mt
+    Sys.sleep(1/10)
+    #flush.console()
+}
+
+#/usr/bin/env bash
+#Rscript -e "library(knitr); knit('prelim.Rnw')"
+#pdflatex prelim.tex
+#bibtex prelim.aux
+#pdflatex prelim.tex
+#pdflatex prelim.tex

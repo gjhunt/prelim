@@ -1,0 +1,37 @@
+\contentsline {chapter}{ABSTRACT}{3}{Doc-Start}
+\mbox { }\newline \noindent {\bf CHAPTER}\newline 
+\hbox { }
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 1.\hspace {5pt}}{\bf Introduction}}{1}{chapter.1}
+\hbox { }
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 2.\hspace {5pt}}{\bf Scientific Background}}{3}{chapter.2}
+\hbox { }
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 3.\hspace {5pt}}{\bf Literature Review}}{6}{chapter.3}
+\hbox { }
+\contentsline {section}{\numberline {3.1}Model Basics}{6}{section.3.1}
+\contentsline {section}{\numberline {3.2}Known Characteristic Profiles}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}Unknown Profiles and Proportions}{11}{section.3.3}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 4.\hspace {5pt}}{\bf Our Method}}{16}{chapter.4}
+\hbox { }
+\contentsline {section}{\numberline {4.1}A Basic Example}{16}{section.4.1}
+\contentsline {section}{\numberline {4.2}Concentrations and Expressions}{20}{section.4.2}
+\contentsline {section}{\numberline {4.3}A General Model}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}Comparison}{27}{section.4.4}
+\contentsline {section}{\numberline {4.5}Estimating $\gamma $ and Choosing Markers.}{30}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Estimating $\gamma $}{30}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Choosing Markers}{31}{subsection.4.5.2}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 5.\hspace {5pt}}{\bf Analysis on Real Data}}{33}{chapter.5}
+\hbox { }
+\contentsline {section}{\numberline {5.1}Methods and Implementations}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}The Rat Data Set}{33}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Blood Data set}{33}{section.5.3}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 6.\hspace {5pt}}{\bf Conclusion}}{38}{chapter.6}
+\hbox { }
+\contentsline {section}{\numberline {6.1}Future Work}{38}{section.6.1}
+\contentsline {chapter}{BIBLIOGRAPHY}{39}{section.6.1}
+\contentsline {chapter}{APPENDICES}{41}{section.6.1}

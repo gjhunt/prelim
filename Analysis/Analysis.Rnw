@@ -1,0 +1,72 @@
+
+\section{Methods and Implementations}
+
+our method 
+-- say it's available on github
+-- basically just choose 1000 marker
+
+their methods
+-- mention methods and citations
+-- say cell mix
+-- say how genes are chosen
+-- say linear level
+-- appendix for code
+
+\section{The Rat Data Set}
+
+\begin{figure}
+  \centering
+<<plot1,cache=FALSE,warning=FALSE,echo=FALSE,error=FALSE,message=FALSE,fig.height=5,fig.width=7>>=
+source('./R/Analysis_script.R',chdir=TRUE)
+sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
+aplot(19830,'diag',sel)
+@ 
+\end{figure}
+
+\begin{figure}
+  \centering
+<<plot2,cache=FALSE,warning=FALSE,echo=FALSE,error=FALSE,message=FALSE,fig.height=5,fig.width=7>>=
+source('./R/Analysis_script.R',chdir=TRUE)
+sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
+aplot(19830,'err_boxplot',sel)
+@ 
+\end{figure}
+
+<<table1,cache=FALSE,warning=FALSE,echo=FALSE,error=FALSE,message=FALSE,results='asis'>>=
+library('xtable')
+source('./R/Analysis_script.R',chdir=TRUE)
+sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
+t = aplot(19830,'summ',sel)
+print(xtable(t),include.rownames=FALSE)
+@ 
+
+\section{The Blood Data set}
+
+\begin{figure}
+  \centering
+<<plot3,cache=FALSE,warning=FALSE,echo=FALSE,error=FALSE,message=FALSE,fig.height=5,fig.width=7>>=
+source('./R/Analysis_script.R',chdir=TRUE)
+sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
+aplot(11058,'diag',sel)
+@ 
+\end{figure}
+
+\begin{figure}
+  \centering
+<<plot4,cache=FALSE,warning=FALSE,echo=FALSE,error=FALSE,message=FALSE,fig.height=5,fig.width=7>>=
+source('./R/Analysis_script.R',chdir=TRUE)
+sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
+aplot(11058,'err_boxplot',sel)
+@ 
+\end{figure}
+
+<<table2,cache=FALSE,warning=FALSE,echo=FALSE,error=FALSE,message=FALSE,results='asis'>>=
+library('xtable')
+source('./R/Analysis_script.R',chdir=TRUE)
+sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
+t = aplot(11058,'summ',sel)
+print(xtable(t),include.rownames=FALSE)
+@ 
+
+
+

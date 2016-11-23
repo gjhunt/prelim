@@ -1,0 +1,222 @@
+\begin{thebibliography}{27}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abbas et~al.(2009)Abbas, Wolslegel, Seshasayee, Modrusan, and
+  Clark]{Abbas2009}
+A.~R. Abbas, K.~Wolslegel, D.~Seshasayee, Z.~Modrusan, and H.~F. Clark.
+\newblock {Deconvolution of blood microarray data identifies cellular
+  activation patterns in systemic lupus erythematosus}.
+\newblock \emph{PLoS ONE}, 4\penalty0 (7), 2009.
+\newblock ISSN 19326203.
+\newblock \doi{10.1371/journal.pone.0006098}.
+
+\bibitem[Affymetrix()]{latin}
+Affymetrix.
+\newblock Latin square data for expression algorithm assessment.
+
+\bibitem[Altboum et~al.(2014)Altboum, Steuerman, David, Barnett-Itzhaki,
+  Valadarsky, Keren-Shaul, Meningher, Mendelson, Mandelboim, Gat-Viks, and
+  Amit]{Altboum2014}
+Z.~Altboum, Y.~Steuerman, E.~David, Z.~Barnett-Itzhaki, L.~Valadarsky,
+  H.~Keren-Shaul, T.~Meningher, E.~Mendelson, M.~Mandelboim, I.~Gat-Viks, and
+  I.~Amit.
+\newblock {Digital cell quantification identifies global immune cell dynamics
+  during influenza infection}.
+\newblock \emph{Molecular Systems Biology}, 10\penalty0 (2):\penalty0 1--14,
+  2014.
+\newblock ISSN 17444292.
+\newblock \doi{10.1002/msb.134947}.
+
+\bibitem[Blei et~al.(2003)Blei, Ng, and Jordan]{Blei2003}
+D.~M. Blei, A.~Y. Ng, and M.~I. Jordan.
+\newblock {Latent Dirichlet Allocation}.
+\newblock 3:\penalty0 993--1022, 2003.
+
+\bibitem[Brunet et~al.(2004)Brunet, Tamayo, Golub, and Mesirov]{Brunet2004}
+J.-p. Brunet, P.~Tamayo, T.~R. Golub, and J.~P. Mesirov.
+\newblock {Metagenes and molecular pattern discovery using matrix
+  factorization}.
+\newblock 2004.
+
+\bibitem[Gagnon-Bartsch and Speed(2012)]{Gagnon-Bartsch2012}
+J.~A. Gagnon-Bartsch and T.~P. Speed.
+\newblock {Using control genes to correct for unwanted variation in microarray
+  data}.
+\newblock \emph{Biostatistics}, 13\penalty0 (3):\penalty0 539--552, 2012.
+\newblock ISSN 14654644.
+\newblock \doi{10.1093/biostatistics/kxr034}.
+
+\bibitem[Gat-viks and Steuerman(2016)]{ComICS2016}
+Y.~Gat-viks and I.~Steuerman.
+\newblock {ComICS: Computational Methods for Immune Cell-Type Subsets}.
+\newblock \penalty0 (1):\penalty0 1--7, 2016.
+
+\bibitem[Gaujoux and Seoighe(2012)]{Gaujoux2012}
+R.~Gaujoux and C.~Seoighe.
+\newblock {Semi-supervised Nonnegative Matrix Factorization for gene expression
+  deconvolution: A case study}.
+\newblock \emph{Infection, Genetics and Evolution}, 12\penalty0 (5):\penalty0
+  913--921, 2012.
+\newblock ISSN 15671348.
+\newblock \doi{10.1016/j.meegid.2011.08.014}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.meegid.2011.08.014}.
+
+\bibitem[Gaujoux et~al.(2013)Gaujoux, Seoighe, and Deconvolution]{Gaujoux2013}
+R.~Gaujoux, C.~Seoighe, and G.~E. Deconvolution.
+\newblock {BIOINFORMATICS Gene expression CellMix : a comprehensive toolbox for
+  gene expression deconvolution}.
+\newblock pages 1--2, 2013.
+\newblock \doi{10.1093/bioinformatics/btt351}.
+
+\bibitem[Gong et~al.(2011)Gong, Hartmann, Kohane, Brinkmann, Staedtler,
+  Letzkus, Bongiovanni, and Szustakowski]{Gong2011}
+T.~Gong, N.~Hartmann, I.~S. Kohane, V.~Brinkmann, F.~Staedtler, M.~Letzkus,
+  S.~Bongiovanni, and J.~D. Szustakowski.
+\newblock {Optimal deconvolution of transcriptional profiling data using
+  quadratic programming with application to complex clinical blood samples}.
+\newblock \emph{PLoS ONE}, 6\penalty0 (11), 2011.
+\newblock ISSN 19326203.
+\newblock \doi{10.1371/journal.pone.0027156}.
+
+\bibitem[Hubbell et~al.(2002)Hubbell, Liu, and Mei]{Hubbell2002}
+E.~Hubbell, W.-m. Liu, and R.~Mei.
+\newblock {Robust estimators for expression analysis}.
+\newblock 18\penalty0 (12):\penalty0 1585--1592, 2002.
+
+\bibitem[Irizarry et~al.(2003)Irizarry, Hobbs, Beazer-barclay, Antonellis,
+  Scherf, and Speed]{Irizarry2003}
+R.~A. Irizarry, B.~Hobbs, Y.~D. Beazer-barclay, K.~J. Antonellis, U.~W.~E.
+  Scherf, and T.~P. Speed.
+\newblock {Exploration , normalization , and summaries of high density
+  oligonucleotide array probe level data}.
+\newblock pages 249--264, 2003.
+
+\bibitem[Lee and Seung(2000)]{lee2000}
+D.~D. Lee and H.~S. Seung.
+\newblock {Learning the parts of objects by non-negative matrix factorization}.
+\newblock 401\penalty0 (October 1999):\penalty0 788--791, 2000.
+
+\bibitem[Liebner et~al.(2014)Liebner, Huang, and Parvin]{Liebner2014}
+D.~A. Liebner, K.~Huang, and J.~D. Parvin.
+\newblock {MMAD: Microarray microdissection with analysis of differences is a
+  computational tool for deconvoluting cell type-specific contributions from
+  tissue samples}.
+\newblock \emph{Bioinformatics}, 30\penalty0 (5):\penalty0 682--689, 2014.
+\newblock ISSN 13674803.
+\newblock \doi{10.1093/bioinformatics/btt566}.
+
+\bibitem[Lu et~al.(2003)Lu, Nakorchevskiy, and Marcotte]{Lu2003}
+P.~Lu, A.~Nakorchevskiy, and E.~M. Marcotte.
+\newblock {Expression deconvolution: a reinterpretation of DNA microarray data
+  reveals dynamic changes in cell populations.}
+\newblock \emph{Proceedings of the National Academy of Sciences of the United
+  States of America}, 100\penalty0 (18):\penalty0 10370--5, 2003.
+\newblock ISSN 0027-8424.
+\newblock \doi{10.1073/pnas.1832361100}.
+\newblock URL \url{http://www.pnas.org/content/100/18/10370{\%}5C}.
+
+\bibitem[Newman et~al.(2015)Newman, {Chih Long Liu, Michael R. Green}, {Andrew
+  J. Gentles}, {Yue Xu}, Diehn, and Alizadeh]{Newman2015}
+A.~M. Newman, {Chih Long Liu, Michael R. Green}, W.~F. {Andrew J. Gentles},
+  C.~D.~H. {Yue Xu}, M.~Diehn, and A.~A. Alizadeh.
+\newblock {Robust enumeration of cell subsets from tissue expression profiles}.
+\newblock \emph{Nat Methods.}, 12\penalty0 (5):\penalty0 193--201, 2015.
+\newblock ISSN 1527-5418.
+\newblock \doi{10.1016/j.molmed.2014.11.008.Mitochondria}.
+
+\bibitem[Pascual-Montano et~al.(2006)Pascual-Montano, Carazo, Member, Kochi,
+  Lehmann, and Pascual-marqui]{Pascual-montano2006}
+A.~Pascual-Montano, J.~M. Carazo, S.~Member, K.~Kochi, D.~Lehmann, and R.~D.
+  Pascual-marqui.
+\newblock {Nonsmooth Nonnegative Matrix Factorization ( ns NMF )}.
+\newblock 28\penalty0 (3):\penalty0 403--415, 2006.
+
+\bibitem[Qiao et~al.(2012)Qiao, Quon, Csaszar, Yu, Morris, and
+  Zandstra]{Qiao2012}
+W.~Qiao, G.~Quon, E.~Csaszar, M.~Yu, Q.~Morris, and P.~W. Zandstra.
+\newblock {PERT: A Method for Expression Deconvolution of Human Blood Samples
+  from Varied Microenvironmental and Developmental Conditions}.
+\newblock \emph{PLoS Computational Biology}, 8\penalty0 (12), 2012.
+\newblock ISSN 1553734X.
+\newblock \doi{10.1371/journal.pcbi.1002838}.
+
+\bibitem[Quon and Morris(2009)]{Quon2009}
+G.~Quon and Q.~Morris.
+\newblock {ISOLATE: A computational strategy for identifying the primary origin
+  of cancers using high-throughput sequencing}.
+\newblock \emph{Bioinformatics}, 25\penalty0 (21):\penalty0 2882--2889, 2009.
+\newblock ISSN 13674803.
+\newblock \doi{10.1093/bioinformatics/btp378}.
+
+\bibitem[Quon et~al.(2013)Quon, Haider, Deshwar, Cui, Boutros, and
+  Morris]{Quon2013}
+G.~Quon, S.~Haider, A.~G. Deshwar, A.~Cui, P.~C. Boutros, and Q.~Morris.
+\newblock {Computational purification of individual tumor gene expression
+  profiles leads to significant improvements in prognostic prediction.}
+\newblock \emph{Genome medicine}, 5\penalty0 (3):\penalty0 29, 2013.
+\newblock ISSN 1756-994X.
+\newblock \doi{10.1186/gm433}.
+
+\bibitem[Repsilber et~al.(2010)Repsilber, Kern, Telaar, Walzl, Black, Selbig,
+  Parida, Kaufmann, and Jacobsen]{Repsilber2010}
+D.~Repsilber, S.~Kern, A.~Telaar, G.~Walzl, G.~F. Black, J.~Selbig, S.~K.
+  Parida, S.~H.~E. Kaufmann, and M.~Jacobsen.
+\newblock {Biomarker discovery in heterogeneous tissue samples -taking the
+  in-silico deconfounding approach.}
+\newblock \emph{BMC bioinformatics}, 11:\penalty0 27, 2010.
+\newblock ISSN 1471-2105.
+\newblock \doi{10.1186/1471-2105-11-27}.
+
+\bibitem[Ritchie et~al.(2015)Ritchie, Phipson, Wu, Hu, Law, Shi, and
+  Smyth]{Ritchie2015}
+M.~E. Ritchie, B.~Phipson, D.~Wu, Y.~Hu, C.~W. Law, W.~Shi, and G.~K. Smyth.
+\newblock {limma powers differential expression analyses for RNA-sequencing and
+  microarray studies}.
+\newblock 43\penalty0 (7), 2015.
+\newblock \doi{10.1093/nar/gkv007}.
+
+\bibitem[Shen-Orr et~al.(2010)Shen-Orr, Tibshirani, Khatri, Bodian, Staedtler,
+  Perry, Hastie, Sarwal, Davis, and Butte]{Shen-Orr2010}
+S.~S. Shen-Orr, R.~Tibshirani, P.~Khatri, D.~L. Bodian, F.~Staedtler, N.~M.
+  Perry, T.~Hastie, M.~M. Sarwal, M.~M. Davis, and A.~J. Butte.
+\newblock {Cell type-specific gene expression differences in complex tissues.}
+\newblock \emph{Nat Methods}, 7\penalty0 (4):\penalty0 287--289, 2010.
+\newblock ISSN 1548-7105.
+\newblock \doi{10.1038/nmeth.1439}.
+
+\bibitem[{The R Core Team}(2016)]{R2016}
+{The R Core Team}.
+\newblock {R : A Language and Environment for Statistical Computing}.
+\newblock 2016.
+\newblock URL \url{https://www.r-project.org/}.
+
+\bibitem[Venet et~al.(2001)Venet, Pecasse, Maenhaut, and Bersini]{Venet2001}
+D.~Venet, F.~Pecasse, C.~Maenhaut, and H.~Bersini.
+\newblock {Separation of samples into their constituents using gene expression
+  data}.
+\newblock \emph{Bioinformatics}, 17\penalty0 (Suppl 1):\penalty0 S279--S287,
+  2001.
+\newblock ISSN 1367-4803.
+
+\bibitem[Wang et~al.(2006)Wang, Master, and Chodosh]{Wang2006}
+M.~Wang, S.~R. Master, and L.~a. Chodosh.
+\newblock {Computational expression deconvolution in a complex mammalian
+  organ.}
+\newblock \emph{BMC bioinformatics}, 7:\penalty0 328, 2006.
+\newblock ISSN 1471-2105.
+\newblock \doi{10.1186/1471-2105-7-328}.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/16817968{\%}5C}.
+
+\bibitem[Zhong et~al.(2013)Zhong, Wan, Pang, Chow, and Liu]{Zhong2013}
+Y.~Zhong, Y.-W. Wan, K.~Pang, L.~M.~L. Chow, and Z.~Liu.
+\newblock {Digital sorting of complex tissues for cell type-specific gene
+  expression profiles.}
+\newblock \emph{BMC bioinformatics}, 14:\penalty0 89, 2013.
+\newblock ISSN 1471-2105.
+\newblock \doi{10.1186/1471-2105-14-89}.
+
+\end{thebibliography}
