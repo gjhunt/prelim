@@ -1,0 +1,46 @@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlkwd{library}\hlstd{(crayon)}
+
+\hlstd{sze} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{unit} \hlstd{=} \hlstr{"Mb"}\hlstd{,} \hlkwc{envir} \hlstd{=} \hlkwd{globalenv}\hlstd{()) \{}
+    \hlstd{os} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+        \hlkwd{object.size}\hlstd{(}\hlkwd{get}\hlstd{(x))}
+    \hlstd{\}}
+    \hlstd{os_pretty} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+        \hlkwd{format}\hlstd{(}\hlkwd{object.size}\hlstd{(}\hlkwd{get}\hlstd{(x)),} \hlkwc{units} \hlstd{= unit)}
+    \hlstd{\}}
+    \hlstd{ord} \hlkwb{=} \hlkwd{order}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{ls}\hlstd{(envir), os),} \hlkwc{decreasing} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+    \hlkwd{print}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{ls}\hlstd{(envir), os_pretty)[ord])}
+    \hlkwd{cat}\hlstd{(}\hlstr{"Total: "}\hlstd{,} \hlkwd{sum}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{ls}\hlstd{(envir), os))} \hlopt{*} \hlnum{1e-09}\hlstd{,} \hlstr{"Gb \textbackslash{}n"}\hlstd{)}
+\hlstd{\}}
+
+
+\hlstd{VERBOSE} \hlkwb{=} \hlnum{TRUE}
+\hlstd{TIME} \hlkwb{=} \hlkwd{Sys.time}\hlstd{()}
+\hlstd{updt} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{msg} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{init} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{done} \hlstd{=} \hlnum{FALSE}\hlstd{) \{}
+    \hlkwa{if} \hlstd{(}\hlkwd{is.null}\hlstd{(msg))}
+        \hlstd{done} \hlkwb{=} \hlnum{TRUE}
+    \hlkwa{if} \hlstd{(VERBOSE) \{}
+        \hlkwa{if} \hlstd{(}\hlopt{!}\hlstd{done) \{}
+            \hlstd{last_msg} \hlkwb{<<-} \hlstd{msg}
+        \hlstd{\}} \hlkwa{else} \hlstd{\{}
+            \hlstd{msg} \hlkwb{<-} \hlkwd{paste}\hlstd{(last_msg,} \hlkwd{green}\hlstd{(}\hlstr{"[DONE]"}\hlstd{))}
+        \hlstd{\}}
+        \hlstd{t2} \hlkwb{=} \hlkwd{Sys.time}\hlstd{()}
+        \hlkwa{if} \hlstd{(init) \{}
+            \hlstd{TIME} \hlkwb{<<-} \hlstd{t2}
+            \hlstd{FIRST} \hlkwb{<<-} \hlstd{t2}
+        \hlstd{\}}
+        \hlstd{MSG} \hlkwb{=} \hlkwd{paste}\hlstd{(msg,} \hlstr{" ("}\hlstd{,} \hlkwd{format}\hlstd{(t2} \hlopt{-} \hlstd{FIRST,} \hlkwc{digits} \hlstd{=} \hlnum{1}\hlstd{),}
+            \hlstr{" ellapsed)"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+        \hlstd{TIME} \hlkwb{<<-} \hlstd{t2}
+        \hlkwd{cat}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlkwd{blue}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"["}\hlstd{, t2,} \hlstr{"] "}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)), MSG,}
+            \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{),} \hlstr{"\textbackslash{}n"}\hlstd{)}
+        \hlkwd{return}\hlstd{(MSG)}
+    \hlstd{\}}
+    \hlkwd{return}\hlstd{(}\hlstr{""}\hlstd{)}
+\hlstd{\}}
+\end{alltt}
+\end{kframe}
+\end{knitrout}

@@ -1,6 +1,44 @@
 #! /usr/bin/env Rscript
 library('knitr')
 library('crayon')
+library('formatR')
+
+source_code = function(R_file){
+    cat(red(paste('Sourcing code for',R_file)),"\n")
+    dir = "append_code/"
+    ml = 60
+    ts = tidy_source(R_file,width.cutoff=ml,output=FALSE)$text.tidy
+
+    if(length(ts)>0){
+        for(t in 1:length(ts)){
+            ss = substr(ts[t],1,1)
+            if(ss=='#' && nchar(ts[t])>ml){
+                ts[t] = paste(substr(ts[t],1,ml-4),"...",sep="")
+            }
+        }
+    }
+    ts = paste(ts,collapse="\n")
+        
+
+    rnw_file = paste(dir,"tmp.Rnw",sep="")
+
+    sink(rnw_file)
+
+    cat(paste("\\documentclass{amsart}\\begin{document}\n<<1,eval=FALSE>>=\n",ts,"\n@\n\\end{document}\n"))
+
+    sink()
+
+    knit(rnw_file,quiet=TRUE)
+    
+    R_file = rev(strsplit(R_file,'/')[[1]])[1]
+    sink(paste(dir,R_file,"source",sep=""))
+    cat(paste(system("sed -n '/begin{knitrout}/,/\\end{knitrout}/p' tmp.tex",intern=TRUE),collapse="\n"))
+    sink()
+
+    system('rm tmp.tex')
+    system('rm append_code/tmp.Rnw')
+}
+
 fname = "prelim"
 tex_fname = paste(fname,".tex",sep="")
 aux_fname = paste(fname,".aux",sep="")
@@ -26,8 +64,12 @@ while(TRUE){
 
         Rnw_files = rownames(oldmt)
         Rnw_files = old_files[grepl(".Rnw$",old_files)]
+
+        R_files = dir(recursive=TRUE)
+        R_files = R_files[grepl(".R$",R_files)]
+
         toss = sapply(Rnw_files,function(x){purl(x,quiet=TRUE)})
-        print(Rnw_files)
+        toss = sapply(R_files,source_code)
         
         cat(blue("Running LaTex.\n"))
 	toss = system(paste("rm",aux_fname),intern=TRUE)
@@ -52,9 +94,3 @@ while(TRUE){
     #flush.console()
 }
 
-#/usr/bin/env bash
-#Rscript -e "library(knitr); knit('prelim.Rnw')"
-#pdflatex prelim.tex
-#bibtex prelim.aux
-#pdflatex prelim.tex
-#pdflatex prelim.tex

@@ -1,0 +1,41 @@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlkwd{library}\hlstd{(}\hlstr{"affy"}\hlstd{)}
+
+\hlstd{data_top_dir} \hlkwb{=} \hlstr{"./latin_data/"}
+\hlstd{affy_batch} \hlkwb{=} \hlkwd{ReadAffy}\hlstd{(}\hlkwc{celfile.path} \hlstd{= data_top_dir)}
+
+\hlcom{## probe-level data}
+\hlstd{pips} \hlkwb{=} \hlkwd{indexProbes}\hlstd{(affy_batch,} \hlstr{"pm"}\hlstd{)}
+\hlstd{mips} \hlkwb{=} \hlkwd{indexProbes}\hlstd{(affy_batch,} \hlstr{"mm"}\hlstd{)}
+\hlstd{d} \hlkwb{=} \hlkwd{t}\hlstd{(}\hlkwd{intensity}\hlstd{(affy_batch))}
+
+\hlcom{# order according to experiment number}
+\hlstd{ord} \hlkwb{=} \hlkwd{order}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{rownames}\hlstd{(d),} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+    \hlkwd{as.integer}\hlstd{(}\hlkwd{substr}\hlstd{(}\hlkwd{strsplit}\hlstd{(x,} \hlstr{"_"}\hlstd{)[[}\hlnum{1}\hlstd{]][}\hlnum{8}\hlstd{],} \hlnum{5}\hlstd{,} \hlnum{10}\hlstd{))}
+\hlstd{\}))}
+\hlstd{d} \hlkwb{=} \hlstd{d[ord, ]}
+
+\hlcom{# determine gene spike-in titrations}
+\hlstd{anno} \hlkwb{=} \hlkwd{read.csv}\hlstd{(}\hlstr{"anno.csv"}\hlstd{,} \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\hlstd{genes} \hlkwb{=} \hlkwd{sapply}\hlstd{(anno[}\hlnum{1}\hlstd{,} \hlnum{2}\hlopt{:}\hlnum{15}\hlstd{],} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+    \hlkwd{strsplit}\hlstd{(x,} \hlstr{"\textbackslash{}n"}\hlstd{,} \hlkwc{fixed} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{\})}
+\hlstd{titration} \hlkwb{=} \hlkwd{as.matrix}\hlstd{(anno[}\hlnum{2}\hlopt{:}\hlnum{15}\hlstd{,} \hlnum{2}\hlopt{:}\hlnum{15}\hlstd{])}
+\hlstd{titration} \hlkwb{=} \hlkwd{apply}\hlstd{(titration,} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{), as.numeric)}
+
+\hlcom{# rows are spiked-in genes, columns are experiment}
+\hlstd{all_titration} \hlkwb{=} \hlkwd{array}\hlstd{(}\hlnum{0}\hlstd{,} \hlkwd{c}\hlstd{(}\hlkwd{dim}\hlstd{(titration)[}\hlnum{1}\hlstd{]} \hlopt{*} \hlnum{3}\hlstd{,} \hlkwd{dim}\hlstd{(titration)[}\hlnum{2}\hlstd{]))}
+\hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{dim}\hlstd{(all_titration)[}\hlnum{1}\hlstd{]) \{}
+    \hlstd{all_titration[i, ]} \hlkwb{=} \hlstd{titration[}\hlkwd{ceiling}\hlstd{(i}\hlopt{/}\hlnum{3}\hlstd{), ]}
+\hlstd{\}}
+\hlstd{all_titration_order} \hlkwb{=} \hlkwd{apply}\hlstd{(all_titration,} \hlnum{2}\hlstd{, order)}
+
+\hlcom{# gene-level data}
+\hlstd{dg} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwd{rma}\hlstd{(affy_batch,} \hlkwc{verbose} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{normalize} \hlstd{=} \hlnum{TRUE}\hlstd{,}
+    \hlkwc{background} \hlstd{=} \hlnum{FALSE}\hlstd{))}
+\hlstd{dg} \hlkwb{=} \hlstd{dg[ord, ]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}

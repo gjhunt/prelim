@@ -1,0 +1,39 @@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlkwd{library}\hlstd{(}\hlstr{"knitr"}\hlstd{)}
+\hlkwd{library}\hlstd{(}\hlstr{"formatR"}\hlstd{)}
+
+\hlstd{R_file} \hlkwb{=} \hlstr{"Method.R"}
+
+\hlstd{dir} \hlkwb{=} \hlstr{"append_code/"}
+\hlstd{ml} \hlkwb{=} \hlnum{60}
+\hlstd{ts} \hlkwb{=} \hlkwd{tidy_source}\hlstd{(R_file,} \hlkwc{width.cutoff} \hlstd{= ml)}\hlopt{$}\hlstd{text.tidy}
+
+\hlkwa{for} \hlstd{(t} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(ts)) \{}
+    \hlstd{ss} \hlkwb{=} \hlkwd{substr}\hlstd{(ts[t],} \hlnum{1}\hlstd{,} \hlnum{1}\hlstd{)}
+    \hlkwa{if} \hlstd{(ss} \hlopt{==} \hlstr{"#"} \hlopt{&&} \hlkwd{nchar}\hlstd{(ts[t])} \hlopt{>} \hlstd{ml) \{}
+        \hlstd{ts[t]} \hlkwb{=} \hlkwd{paste}\hlstd{(}\hlkwd{substr}\hlstd{(ts[t],} \hlnum{1}\hlstd{, ml} \hlopt{-} \hlnum{4}\hlstd{),} \hlstr{"..."}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+    \hlstd{\}}
+\hlstd{\}}
+\hlstd{ts} \hlkwb{=} \hlkwd{paste}\hlstd{(ts,} \hlkwc{collapse} \hlstd{=} \hlstr{"\textbackslash{}n"}\hlstd{)}
+
+\hlstd{rnw_file} \hlkwb{=} \hlkwd{paste}\hlstd{(dir,} \hlstr{"tmp.Rnw"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+
+\hlkwd{sink}\hlstd{(rnw_file)}
+
+\hlkwd{cat}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"\textbackslash{}\textbackslash{}documentclass\{amsart\}\textbackslash{}\textbackslash{}begin\{document\}\textbackslash{}n<<1,eval=FALSE>>=\textbackslash{}n"}\hlstd{,}
+    \hlstd{ts,} \hlstr{"\textbackslash{}n@\textbackslash{}n\textbackslash{}\textbackslash{}end\{document\}\textbackslash{}n"}\hlstd{))}
+
+\hlkwd{sink}\hlstd{()}
+
+\hlkwd{knit}\hlstd{(rnw_file)}
+
+
+\hlkwd{sink}\hlstd{(}\hlkwd{paste}\hlstd{(dir, R_file,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{))}
+\hlkwd{cat}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlkwd{system}\hlstd{(}\hlstr{"sed -n '/begin\{knitrout\}/,/\textbackslash{}\textbackslash{}end\{knitrout\}/p' tmp.tex"}\hlstd{,}
+    \hlkwc{intern} \hlstd{=} \hlnum{TRUE}\hlstd{),} \hlkwc{collapse} \hlstd{=} \hlstr{"\textbackslash{}n"}\hlstd{))}
+\hlkwd{sink}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}

@@ -1,0 +1,72 @@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlstd{sigmoid} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,} \hlkwc{t}\hlstd{) \{}
+    \hlkwd{return}\hlstd{(t[}\hlnum{1}\hlstd{]} \hlopt{+} \hlstd{t[}\hlnum{2}\hlstd{]}\hlopt{/}\hlstd{(}\hlnum{1} \hlopt{+} \hlkwd{exp}\hlstd{(}\hlopt{-}\hlstd{(t[}\hlnum{3}\hlstd{]} \hlopt{+} \hlstd{t[}\hlnum{4}\hlstd{]} \hlopt{*} \hlstd{x))))}
+\hlstd{\}}
+\hlstd{sigmoid_inv} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,} \hlkwc{t}\hlstd{) \{}
+    \hlkwd{return}\hlstd{((}\hlopt{-}\hlnum{1}\hlopt{/}\hlstd{t[}\hlnum{4}\hlstd{])} \hlopt{*} \hlstd{(}\hlkwd{log}\hlstd{((t[}\hlnum{2}\hlstd{]}\hlopt{/}\hlstd{(x} \hlopt{-} \hlstd{t[}\hlnum{1}\hlstd{]))} \hlopt{-} \hlnum{1}\hlstd{)} \hlopt{+} \hlstd{t[}\hlnum{3}\hlstd{]))}
+\hlstd{\}}
+
+\hlstd{F} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,} \hlkwc{y}\hlstd{) \{}
+    \hlkwd{return}\hlstd{(x} \hlopt{-} \hlstd{y)}
+\hlstd{\}}
+
+\hlstd{fitd} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{group}\hlstd{,} \hlkwc{gene}\hlstd{,} \hlkwc{probe}\hlstd{,} \hlkwc{ips}\hlstd{) \{}
+
+    \hlstd{probe_groups} \hlkwb{=} \hlstd{ips[}\hlkwd{unlist}\hlstd{(}\hlkwd{lapply}\hlstd{(genes[group],} \hlstr{"["}\hlstd{, gene))]}
+    \hlstd{probes} \hlkwb{=} \hlkwd{unlist}\hlstd{(}\hlkwd{lapply}\hlstd{(probe_groups,} \hlstr{"["}\hlstd{, probe))}
+    \hlstd{od} \hlkwb{=} \hlstd{d[, probes]}
+
+    \hlstd{vlog2d} \hlkwb{=} \hlkwd{as.vector}\hlstd{(}\hlkwd{t}\hlstd{(}\hlkwd{log2}\hlstd{(od)))}
+    \hlkwa{if} \hlstd{(}\hlopt{!}\hlkwd{is.null}\hlstd{(}\hlkwd{dim}\hlstd{(od))) \{}
+        \hlstd{vlog2t} \hlkwb{=} \hlkwd{rep}\hlstd{(}\hlkwd{log2}\hlstd{(all_titration[, group]} \hlopt{+} \hlnum{1e-04}\hlstd{),} \hlkwd{dim}\hlstd{(od)[}\hlnum{2}\hlstd{])}
+    \hlstd{\}} \hlkwa{else} \hlstd{\{}
+        \hlstd{vlog2t} \hlkwb{=} \hlkwd{log2}\hlstd{(all_titration[, group]} \hlopt{+} \hlnum{1e-04}\hlstd{)}
+    \hlstd{\}}
+    \hlstd{vlog2t} \hlkwb{=} \hlstd{vlog2t} \hlopt{+} \hlkwd{runif}\hlstd{(}\hlkwd{length}\hlstd{(vlog2t),} \hlnum{0}\hlstd{,} \hlnum{1}\hlopt{/}\hlnum{1000}\hlstd{)}
+
+    \hlstd{fail} \hlkwb{=} \hlnum{TRUE}
+    \hlstd{i} \hlkwb{=} \hlnum{0}
+    \hlstd{max_try} \hlkwb{=} \hlnum{10}
+    \hlstd{t} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{6.3657341}\hlstd{,} \hlnum{6.6679978}\hlstd{,} \hlopt{-}\hlnum{3.0497695}\hlstd{,} \hlnum{0.6106055}\hlstd{)}
+
+    \hlkwa{while} \hlstd{(fail) \{}
+        \hlstd{i} \hlkwb{=} \hlstd{i} \hlopt{+} \hlnum{1}
+        \hlkwa{if} \hlstd{(i} \hlopt{>} \hlstd{max_try) \{}
+            \hlstd{fail} \hlkwb{=} \hlnum{2}
+            \hlkwa{break}
+        \hlstd{\}}
+
+        \hlstd{fail} \hlkwb{=} \hlkwd{tryCatch}\hlstd{(\{}
+            \hlkwa{if} \hlstd{(i} \hlopt{!=} \hlnum{1}\hlstd{) \{}
+                \hlstd{t} \hlkwb{=} \hlstd{t} \hlopt{+} \hlkwd{rnorm}\hlstd{(}\hlkwd{length}\hlstd{(t),} \hlnum{0}\hlstd{,} \hlnum{1}\hlstd{)}
+            \hlstd{\}}
+            \hlstd{init} \hlkwb{=} \hlkwd{list}\hlstd{(}\hlkwc{t1} \hlstd{= t[}\hlnum{1}\hlstd{],} \hlkwc{t2} \hlstd{= t[}\hlnum{2}\hlstd{],} \hlkwc{t3} \hlstd{= t[}\hlnum{3}\hlstd{],} \hlkwc{t4} \hlstd{= t[}\hlnum{4}\hlstd{])}
+            \hlstd{mod} \hlkwb{=} \hlkwd{nls}\hlstd{(vlog2d} \hlopt{~} \hlkwd{sigmoid}\hlstd{(vlog2t,} \hlkwd{c}\hlstd{(t1, t2, t3,}
+                \hlstd{t4)),} \hlkwc{start} \hlstd{= init,} \hlkwc{control} \hlstd{=} \hlkwd{list}\hlstd{(}\hlkwc{warnOnly} \hlstd{=} \hlnum{FALSE}\hlstd{,}
+                \hlkwc{maxiter} \hlstd{=} \hlnum{1000}\hlstd{,} \hlkwc{minFactor} \hlstd{=} \hlnum{1e-12}\hlstd{))}
+            \hlstd{fail} \hlkwb{=} \hlnum{FALSE}
+        \hlstd{\},} \hlkwc{error} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{e}\hlstd{) \{}
+            \hlkwd{return}\hlstd{(}\hlnum{TRUE}\hlstd{)}
+        \hlstd{\})}
+    \hlstd{\}}
+
+    \hlkwa{if} \hlstd{(fail} \hlopt{<} \hlnum{2}\hlstd{) \{}
+        \hlstd{t1} \hlkwb{=} \hlkwd{coef}\hlstd{(mod)[}\hlnum{1}\hlstd{]}
+        \hlstd{t2} \hlkwb{=} \hlkwd{coef}\hlstd{(mod)[}\hlnum{2}\hlstd{]}
+        \hlstd{t3} \hlkwb{=} \hlkwd{coef}\hlstd{(mod)[}\hlnum{3}\hlstd{]}
+        \hlstd{t4} \hlkwb{=} \hlkwd{coef}\hlstd{(mod)[}\hlnum{4}\hlstd{]}
+        \hlstd{sigmoid} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+            \hlkwd{return}\hlstd{(t1} \hlopt{+} \hlstd{t2}\hlopt{/}\hlstd{(}\hlnum{1} \hlopt{+} \hlkwd{exp}\hlstd{(}\hlopt{-}\hlstd{(t3} \hlopt{+} \hlstd{t4} \hlopt{*} \hlstd{x))))}
+        \hlstd{\}}
+        \hlkwd{return}\hlstd{(}\hlkwd{list}\hlstd{(}\hlkwc{dat} \hlstd{=} \hlkwd{cbind}\hlstd{(vlog2t, vlog2d),} \hlkwc{fail} \hlstd{=} \hlnum{FALSE}\hlstd{,}
+            \hlkwc{theta} \hlstd{=} \hlkwd{c}\hlstd{(t1, t2, t3, t4)))}
+    \hlstd{\}}
+
+    \hlkwd{return}\hlstd{(}\hlkwd{list}\hlstd{(}\hlkwc{dat} \hlstd{=} \hlkwd{cbind}\hlstd{(vlog2t, vlog2d),} \hlkwc{fail} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{theta} \hlstd{=} \hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,}
+        \hlnum{4}\hlstd{)))}
+\hlstd{\}}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
