@@ -10,37 +10,48 @@
 
 \hlstd{this_dir} \hlkwb{=} \hlkwd{getwd}\hlstd{()}
 
-\hlstd{aplot} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{num}\hlstd{,} \hlkwc{plot_type}\hlstd{,} \hlkwc{sel} \hlstd{=} \hlkwd{rep}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{5}\hlstd{)) \{}
+\hlstd{aplot} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{num}\hlstd{,} \hlkwc{plot_type}\hlstd{,} \hlkwc{sel} \hlstd{=} \hlkwd{rep}\hlstd{(}\hlnum{TRUE}\hlstd{,}
+    \hlnum{5}\hlstd{)) \{}
     \hlstd{mgs} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{affy_batch}\hlstd{,} \hlkwc{marker_probes}\hlstd{) \{}
         \hlstd{ips} \hlkwb{=} \hlkwd{indexProbes}\hlstd{(affy_batch,} \hlkwc{which} \hlstd{=} \hlstr{"both"}\hlstd{)}
 
-        \hlstd{compars} \hlkwb{=} \hlkwd{array}\hlstd{(}\hlnum{0}\hlstd{,} \hlkwd{c}\hlstd{(}\hlkwd{length}\hlstd{(ips),} \hlkwd{length}\hlstd{(marker_probes)))}
+        \hlstd{compars} \hlkwb{=} \hlkwd{array}\hlstd{(}\hlnum{0}\hlstd{,} \hlkwd{c}\hlstd{(}\hlkwd{length}\hlstd{(ips),}
+            \hlkwd{length}\hlstd{(marker_probes)))}
         \hlkwd{rownames}\hlstd{(compars)} \hlkwb{=} \hlkwd{names}\hlstd{(ips)}
 
         \hlstd{melted_ips} \hlkwb{=} \hlkwd{melt}\hlstd{(ips)}
-        \hlkwd{colnames}\hlstd{(melted_ips)} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"probe"}\hlstd{,} \hlstr{"gene"}\hlstd{)}
-        \hlstd{melted_ips}\hlopt{$}\hlstd{probe} \hlkwb{=} \hlkwd{sapply}\hlstd{(melted_ips}\hlopt{$}\hlstd{probe, toString)}
+        \hlkwd{colnames}\hlstd{(melted_ips)} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"probe"}\hlstd{,}
+            \hlstr{"gene"}\hlstd{)}
+        \hlstd{melted_ips}\hlopt{$}\hlstd{probe} \hlkwb{=} \hlkwd{sapply}\hlstd{(melted_ips}\hlopt{$}\hlstd{probe,}
+            \hlstd{toString)}
 
-        \hlstd{marker_gtables} \hlkwb{=} \hlkwd{lapply}\hlstd{(marker_probes,} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
-            \hlkwd{table}\hlstd{(melted_ips}\hlopt{$}\hlstd{gene[}\hlkwd{which}\hlstd{(melted_ips}\hlopt{$}\hlstd{probe} \hlopt{%in%}
-                \hlstd{x)])}
-        \hlstd{\})}
+        \hlstd{marker_gtables} \hlkwb{=} \hlkwd{lapply}\hlstd{(marker_probes,}
+            \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+                \hlkwd{table}\hlstd{(melted_ips}\hlopt{$}\hlstd{gene[}\hlkwd{which}\hlstd{(melted_ips}\hlopt{$}\hlstd{probe} \hlopt{%in%}
+                  \hlstd{x)])}
+            \hlstd{\})}
         \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(marker_probes)) \{}
-            \hlstd{compars[}\hlkwd{names}\hlstd{(marker_gtables[[i]]), i]} \hlkwb{=} \hlstd{marker_gtables[[i]]}
+            \hlstd{compars[}\hlkwd{names}\hlstd{(marker_gtables[[i]]),}
+                \hlstd{i]} \hlkwb{=} \hlstd{marker_gtables[[i]]}
         \hlstd{\}}
-        \hlstd{maxes} \hlkwb{=} \hlkwd{apply}\hlstd{(compars[}\hlkwd{rowMeans}\hlstd{(compars)} \hlopt{>} \hlnum{0}\hlstd{, ],} \hlnum{1}\hlstd{, which.max)}
-        \hlstd{marker_genes} \hlkwb{=} \hlkwd{lapply}\hlstd{(}\hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(marker_probes),} \hlkwa{function}\hlstd{(}\hlkwc{i}\hlstd{) \{}
-            \hlkwd{names}\hlstd{(maxes)[maxes} \hlopt{==} \hlstd{i]}
-        \hlstd{\})}
+        \hlstd{maxes} \hlkwb{=} \hlkwd{apply}\hlstd{(compars[}\hlkwd{rowMeans}\hlstd{(compars)} \hlopt{>}
+            \hlnum{0}\hlstd{, ],} \hlnum{1}\hlstd{, which.max)}
+        \hlstd{marker_genes} \hlkwb{=} \hlkwd{lapply}\hlstd{(}\hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(marker_probes),}
+            \hlkwa{function}\hlstd{(}\hlkwc{i}\hlstd{) \{}
+                \hlkwd{names}\hlstd{(maxes)[maxes} \hlopt{==} \hlstd{i]}
+            \hlstd{\})}
         \hlkwd{names}\hlstd{(marker_genes)} \hlkwb{=} \hlkwd{names}\hlstd{(marker_probes)}
         \hlkwd{return}\hlstd{(marker_genes)}
     \hlstd{\}}
 
     \hlstd{n_choose} \hlkwb{=} \hlnum{1000}
 
-    \hlstd{saved_dir} \hlkwb{=} \hlkwd{paste}\hlstd{(this_dir,} \hlstr{"/data/"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
-    \hlstd{saved_dname} \hlkwb{=} \hlkwd{paste}\hlstd{(num,} \hlstr{"_"}\hlstd{, n_choose,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
-    \hlstd{saved_f} \hlkwb{=} \hlkwd{paste}\hlstd{(saved_dir, saved_dname,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+    \hlstd{saved_dir} \hlkwb{=} \hlkwd{paste}\hlstd{(this_dir,} \hlstr{"/data/"}\hlstd{,}
+        \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+    \hlstd{saved_dname} \hlkwb{=} \hlkwd{paste}\hlstd{(num,} \hlstr{"_"}\hlstd{, n_choose,}
+        \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+    \hlstd{saved_f} \hlkwb{=} \hlkwd{paste}\hlstd{(saved_dir, saved_dname,}
+        \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
 
     \hlkwa{if} \hlstd{(}\hlopt{!}\hlkwd{file.exists}\hlstd{(saved_f)) \{}
 
@@ -54,53 +65,64 @@
         \hlkwd{updt}\hlstd{()}
 
         \hlkwd{updt}\hlstd{(}\hlstr{"Generating marker probes.\textbackslash{}n"}\hlstd{)}
-        \hlstd{mps} \hlkwb{=} \hlkwd{deconv}\hlstd{(d}\hlopt{$}\hlstd{affy_batch, d}\hlopt{$}\hlstd{pure_samples,} \hlkwc{marker_info_only} \hlstd{=} \hlnum{TRUE}\hlstd{)}\hlopt{$}\hlstd{marker_info}
+        \hlstd{mps} \hlkwb{=} \hlkwd{deconv}\hlstd{(d}\hlopt{$}\hlstd{affy_batch, d}\hlopt{$}\hlstd{pure_samples,}
+            \hlkwc{marker_info_only} \hlstd{=} \hlnum{TRUE}\hlstd{)}\hlopt{$}\hlstd{marker_info}
         \hlstd{marker_probes} \hlkwb{=} \hlkwd{lapply}\hlstd{(mps,} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
             \hlkwd{rownames}\hlstd{(x[}\hlnum{1}\hlopt{:}\hlstd{n_choose, ])}
         \hlstd{\})}
-        \hlstd{marker_genes} \hlkwb{=} \hlkwd{mgs}\hlstd{(d}\hlopt{$}\hlstd{affy_batch, marker_probes)}
+        \hlstd{marker_genes} \hlkwb{=} \hlkwd{mgs}\hlstd{(d}\hlopt{$}\hlstd{affy_batch,}
+            \hlstd{marker_probes)}
         \hlkwd{updt}\hlstd{()}
 
-        \hlkwd{updt}\hlstd{(}\hlstr{"Running my linear deconvolution algorithm."}\hlstd{,} \hlkwc{init} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-        \hlstd{my_ests_lin} \hlkwb{=} \hlkwd{deconv}\hlstd{(d}\hlopt{$}\hlstd{affy_batch, d}\hlopt{$}\hlstd{pure_samples,} \hlkwc{marker_probes} \hlstd{= marker_probes,}
+        \hlkwd{updt}\hlstd{(}\hlstr{"Running my linear deconvolution algorithm."}\hlstd{,}
+            \hlkwc{init} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+        \hlstd{my_ests_lin} \hlkwb{=} \hlkwd{deconv}\hlstd{(d}\hlopt{$}\hlstd{affy_batch,}
+            \hlstd{d}\hlopt{$}\hlstd{pure_samples,} \hlkwc{marker_probes} \hlstd{= marker_probes,}
             \hlkwc{model} \hlstd{=} \hlstr{"linear"}\hlstd{)}\hlopt{$}\hlstd{estimates}
         \hlkwd{updt}\hlstd{()}
 
         \hlstd{logv} \hlkwb{=} \hlnum{FALSE}
 
         \hlkwd{updt}\hlstd{(}\hlstr{"Running DSA."}\hlstd{)}
-        \hlstd{res_dsa} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,} \hlkwc{x} \hlstd{=} \hlkwd{MarkerList}\hlstd{(marker_genes),}
+        \hlstd{res_dsa} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,}
+            \hlkwc{x} \hlstd{=} \hlkwd{MarkerList}\hlstd{(marker_genes),}
             \hlkwc{method} \hlstd{=} \hlstr{"dsa"}\hlstd{,} \hlkwc{log} \hlstd{= logv)}
         \hlstd{dsa_ests} \hlkwb{=} \hlkwd{t}\hlstd{(}\hlkwd{coef}\hlstd{(res_dsa))}
         \hlkwd{updt}\hlstd{()}
 
         \hlkwd{updt}\hlstd{(}\hlstr{"Running ssKL."}\hlstd{)}
-        \hlstd{res_sskl} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,} \hlkwc{x} \hlstd{=} \hlkwd{MarkerList}\hlstd{(marker_genes),}
+        \hlstd{res_sskl} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,}
+            \hlkwc{x} \hlstd{=} \hlkwd{MarkerList}\hlstd{(marker_genes),}
             \hlkwc{method} \hlstd{=} \hlstr{"sskl"}\hlstd{,} \hlkwc{log} \hlstd{= logv)}
         \hlstd{sskl_ests} \hlkwb{=} \hlkwd{t}\hlstd{(}\hlkwd{coef}\hlstd{(res_sskl))}
         \hlkwd{updt}\hlstd{()}
 
         \hlkwd{updt}\hlstd{(}\hlstr{"Running ssF."}\hlstd{)}
-        \hlstd{res_ssf} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,} \hlkwc{x} \hlstd{=} \hlkwd{MarkerList}\hlstd{(marker_genes),}
+        \hlstd{res_ssf} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,}
+            \hlkwc{x} \hlstd{=} \hlkwd{MarkerList}\hlstd{(marker_genes),}
             \hlkwc{method} \hlstd{=} \hlstr{"ssfrobenius"}\hlstd{,} \hlkwc{log} \hlstd{= logv)}
         \hlstd{ssf_ests} \hlkwb{=} \hlkwd{t}\hlstd{(}\hlkwd{coef}\hlstd{(res_ssf))}
         \hlkwd{updt}\hlstd{()}
 
         \hlkwd{updt}\hlstd{(}\hlstr{"Running lsfit."}\hlstd{)}
-        \hlstd{res_lsfit} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,} \hlkwd{basis}\hlstd{(d}\hlopt{$}\hlstd{cellmix)[}\hlkwd{unlist}\hlstd{(marker_genes),}
-            \hlstd{],} \hlkwc{method} \hlstd{=} \hlstr{"lsfit"}\hlstd{)}
+        \hlstd{res_lsfit} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,}
+            \hlkwd{basis}\hlstd{(d}\hlopt{$}\hlstd{cellmix)[}\hlkwd{unlist}\hlstd{(marker_genes),}
+                \hlstd{],} \hlkwc{method} \hlstd{=} \hlstr{"lsfit"}\hlstd{)}
         \hlstd{lsfit_ests} \hlkwb{=} \hlkwd{t}\hlstd{(}\hlkwd{coef}\hlstd{(res_lsfit))}
         \hlkwd{updt}\hlstd{()}
 
         \hlkwd{updt}\hlstd{(}\hlstr{"Running qprog.\textbackslash{}n"}\hlstd{)}
-        \hlstd{res_qprog} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,} \hlkwc{x} \hlstd{=} \hlkwd{basis}\hlstd{(d}\hlopt{$}\hlstd{cellmix)[}\hlkwd{unlist}\hlstd{(marker_genes),}
-            \hlstd{],} \hlkwc{method} \hlstd{=} \hlstr{"qprog"}\hlstd{)}
+        \hlstd{res_qprog} \hlkwb{=} \hlkwd{ged}\hlstd{(}\hlkwc{object} \hlstd{= d}\hlopt{$}\hlstd{cellmix,}
+            \hlkwc{x} \hlstd{=} \hlkwd{basis}\hlstd{(d}\hlopt{$}\hlstd{cellmix)[}\hlkwd{unlist}\hlstd{(marker_genes),}
+                \hlstd{],} \hlkwc{method} \hlstd{=} \hlstr{"qprog"}\hlstd{)}
         \hlstd{qprog_ests} \hlkwb{=} \hlkwd{t}\hlstd{(}\hlkwd{coef}\hlstd{(res_qprog))}
         \hlkwd{updt}\hlstd{()}
 
-        \hlstd{res} \hlkwb{=} \hlkwd{list}\hlstd{(}\hlkwc{my_ests_lin} \hlstd{= my_ests_lin,} \hlkwc{dsa} \hlstd{= dsa_ests,}
-            \hlkwc{lsfit} \hlstd{= lsfit_ests,} \hlkwc{qprog} \hlstd{= qprog_ests,} \hlkwc{sskl} \hlstd{= sskl_ests,}
-            \hlkwc{ssf} \hlstd{= ssf_ests,} \hlkwc{true} \hlstd{= d}\hlopt{$}\hlstd{conv,} \hlkwc{pure_samples} \hlstd{= d}\hlopt{$}\hlstd{pure_samples)}
+        \hlstd{res} \hlkwb{=} \hlkwd{list}\hlstd{(}\hlkwc{my_ests_lin} \hlstd{= my_ests_lin,}
+            \hlkwc{dsa} \hlstd{= dsa_ests,} \hlkwc{lsfit} \hlstd{= lsfit_ests,}
+            \hlkwc{qprog} \hlstd{= qprog_ests,} \hlkwc{sskl} \hlstd{= sskl_ests,}
+            \hlkwc{ssf} \hlstd{= ssf_ests,} \hlkwc{true} \hlstd{= d}\hlopt{$}\hlstd{conv,}
+            \hlkwc{pure_samples} \hlstd{= d}\hlopt{$}\hlstd{pure_samples)}
 
         \hlkwd{saveRDS}\hlstd{(res, saved_f)}
     \hlstd{\}} \hlkwa{else} \hlstd{\{}
@@ -109,20 +131,24 @@
 
     \hlcom{# sel =}
     \hlcom{# c(input$ours_linear,input$dsa,input$lsfit,input$qprog,input$sskl,input$ssf)}
-    \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{)}
+    \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,}
+        \hlnum{FALSE}\hlstd{)}
 
-    \hlstd{df} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{type} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{true)[,} \hlnum{2}\hlstd{],} \hlkwc{true} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{true)}\hlopt{$}\hlstd{value,}
-        \hlkwc{my_ests_lin} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{my_ests_lin)}\hlopt{$}\hlstd{value,} \hlkwc{dsa} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{dsa)}\hlopt{$}\hlstd{value,}
-        \hlkwc{lsfit} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{lsfit)}\hlopt{$}\hlstd{value,} \hlkwc{qprog} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{qprog)}\hlopt{$}\hlstd{value,}
-        \hlkwc{sskl} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{sskl)}\hlopt{$}\hlstd{value,} \hlkwc{ssf} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{ssf)}\hlopt{$}\hlstd{value)}
+    \hlstd{df} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{type} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{true)[,}
+        \hlnum{2}\hlstd{],} \hlkwc{true} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{true)}\hlopt{$}\hlstd{value,}
+        \hlkwc{my_ests_lin} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{my_ests_lin)}\hlopt{$}\hlstd{value,}
+        \hlkwc{dsa} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{dsa)}\hlopt{$}\hlstd{value,} \hlkwc{lsfit} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{lsfit)}\hlopt{$}\hlstd{value,}
+        \hlkwc{qprog} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{qprog)}\hlopt{$}\hlstd{value,} \hlkwc{sskl} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{sskl)}\hlopt{$}\hlstd{value,}
+        \hlkwc{ssf} \hlstd{=} \hlkwd{melt}\hlstd{(res}\hlopt{$}\hlstd{ssf)}\hlopt{$}\hlstd{value)}
 
     \hlstd{data_sel} \hlkwb{=} \hlnum{1}\hlopt{:}\hlkwd{dim}\hlstd{(df)[}\hlnum{1}\hlstd{]}
 
     \hlstd{K} \hlkwb{=} \hlkwd{length}\hlstd{(res}\hlopt{$}\hlstd{pure_samples)}
     \hlstd{ps} \hlkwb{=} \hlkwd{unlist}\hlstd{(res}\hlopt{$}\hlstd{pure_samples)}
-    \hlstd{ps_map} \hlkwb{=} \hlkwd{melt}\hlstd{(}\hlkwd{data.frame}\hlstd{(}\hlkwd{t}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlnum{1}\hlopt{:}\hlkwd{dim}\hlstd{(res}\hlopt{$}\hlstd{true)[}\hlnum{1}\hlstd{],} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
-        \hlkwd{rep}\hlstd{(x, K)}
-    \hlstd{\}))))[,} \hlnum{2}\hlstd{]}
+    \hlstd{ps_map} \hlkwb{=} \hlkwd{melt}\hlstd{(}\hlkwd{data.frame}\hlstd{(}\hlkwd{t}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlnum{1}\hlopt{:}\hlkwd{dim}\hlstd{(res}\hlopt{$}\hlstd{true)[}\hlnum{1}\hlstd{],}
+        \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+            \hlkwd{rep}\hlstd{(x, K)}
+        \hlstd{\}))))[,} \hlnum{2}\hlstd{]}
     \hlstd{ps_rows} \hlkwb{=} \hlkwd{which}\hlstd{(ps_map} \hlopt{%in%} \hlstd{ps)}
     \hlstd{data_sel} \hlkwb{=} \hlstd{data_sel[}\hlopt{-}\hlstd{ps_rows]}
 
@@ -135,8 +161,8 @@
     \hlcom{## diag plot}
     \hlkwa{if} \hlstd{(plot_type} \hlopt{==} \hlstr{"diag"}\hlstd{) \{}
         \hlstd{algo_types} \hlkwb{=} \hlkwd{names}\hlstd{(df)[}\hlopt{-}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{)]}
-        \hlstd{algo_names} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"Our Algorithm"}\hlstd{,} \hlstr{"DSA"}\hlstd{,} \hlstr{"LSFIT"}\hlstd{,} \hlstr{"QPROG"}\hlstd{,}
-            \hlstr{"ssKL"}\hlstd{,} \hlstr{"ssFrobenius"}\hlstd{)}
+        \hlstd{algo_names} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"Our Algorithm"}\hlstd{,} \hlstr{"DSA"}\hlstd{,}
+            \hlstr{"LSFIT"}\hlstd{,} \hlstr{"QPROG"}\hlstd{,} \hlstr{"ssKL"}\hlstd{,} \hlstr{"ssFrobenius"}\hlstd{)}
         \hlstd{algo_colors} \hlkwb{=} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(algo_names)}
 
         \hlstd{algo_types} \hlkwb{=} \hlstd{algo_types[sel]}
@@ -148,23 +174,30 @@
         \hlstd{plot_df} \hlkwb{=} \hlkwd{melt}\hlstd{(df[, algo_types])}
         \hlstd{plot_df}\hlopt{$}\hlstd{true} \hlkwb{=} \hlstd{rep_true}
         \hlkwa{if} \hlstd{(}\hlkwd{length}\hlstd{(algo_types)} \hlopt{==} \hlnum{1}\hlstd{) \{}
-            \hlstd{plot_df}\hlopt{$}\hlstd{variable} \hlkwb{=} \hlkwd{rep}\hlstd{(algo_types[}\hlnum{1}\hlstd{],} \hlkwd{dim}\hlstd{(plot_df)[}\hlnum{1}\hlstd{])}
+            \hlstd{plot_df}\hlopt{$}\hlstd{variable} \hlkwb{=} \hlkwd{rep}\hlstd{(algo_types[}\hlnum{1}\hlstd{],}
+                \hlkwd{dim}\hlstd{(plot_df)[}\hlnum{1}\hlstd{])}
         \hlstd{\}}
 
-        \hlstd{ggplot} \hlkwb{=} \hlkwd{qplot}\hlstd{(}\hlkwc{data} \hlstd{= df,} \hlkwc{x} \hlstd{= true,} \hlkwc{y} \hlstd{= my_ests_lin,}
-            \hlkwc{col} \hlstd{=} \hlkwd{I}\hlstd{(}\hlstr{"black"}\hlstd{),} \hlkwc{size} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{2.5}\hlstd{),} \hlkwc{shape} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{1}\hlstd{),} \hlkwc{alpha} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{0}\hlstd{))} \hlopt{+}
-            \hlkwd{ggtitle}\hlstd{(}\hlstr{"Estimated proportions by true proportions"}\hlstd{)} \hlopt{+}
-            \hlkwd{labs}\hlstd{(}\hlkwc{x} \hlstd{=} \hlstr{"True Proportions"}\hlstd{,} \hlkwc{y} \hlstd{=} \hlstr{"Estimated Proportions"}\hlstd{)}
-        \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{geom_abline}\hlstd{(}\hlkwc{slope} \hlstd{=} \hlnum{1}\hlstd{,} \hlkwc{intercept} \hlstd{=} \hlnum{0}\hlstd{,}
-            \hlkwc{color} \hlstd{=} \hlstr{"orange"}\hlstd{,} \hlkwc{size} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{1}\hlstd{))}
+        \hlstd{ggplot} \hlkwb{=} \hlkwd{qplot}\hlstd{(}\hlkwc{data} \hlstd{= df,} \hlkwc{x} \hlstd{= true,}
+            \hlkwc{y} \hlstd{= my_ests_lin,} \hlkwc{col} \hlstd{=} \hlkwd{I}\hlstd{(}\hlstr{"black"}\hlstd{),}
+            \hlkwc{size} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{2.5}\hlstd{),} \hlkwc{shape} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{1}\hlstd{),}
+            \hlkwc{alpha} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{0}\hlstd{))} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Estimated proportions by true proportions"}\hlstd{)} \hlopt{+}
+            \hlkwd{labs}\hlstd{(}\hlkwc{x} \hlstd{=} \hlstr{"True Proportions"}\hlstd{,}
+                \hlkwc{y} \hlstd{=} \hlstr{"Estimated Proportions"}\hlstd{)}
+        \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{geom_abline}\hlstd{(}\hlkwc{slope} \hlstd{=} \hlnum{1}\hlstd{,}
+            \hlkwc{intercept} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{color} \hlstd{=} \hlstr{"orange"}\hlstd{,}
+            \hlkwc{size} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{1}\hlstd{))}
         \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{theme}\hlstd{(}\hlkwc{axis.text} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{),}
-            \hlkwc{axis.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,} \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),}
-            \hlkwc{plot.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,} \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),}
-            \hlkwc{legend.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{),} \hlkwc{legend.position} \hlstd{=} \hlstr{"bottom"}\hlstd{)}
-        \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{geom_point}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= true,} \hlkwc{y} \hlstd{= value,}
-            \hlkwc{col} \hlstd{= variable),} \hlkwc{data} \hlstd{= plot_df,} \hlkwc{size} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{2.5}\hlstd{),} \hlkwc{shape} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{1}\hlstd{))}
-        \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{color} \hlstd{=} \hlstr{"Algorithm"}\hlstd{)} \hlopt{+} \hlkwd{scale_color_manual}\hlstd{(}\hlkwc{labels} \hlstd{= algo_names,}
-            \hlkwc{values} \hlstd{= algo_colors)}
+            \hlkwc{axis.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,}
+                \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),} \hlkwc{plot.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,}
+                \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),} \hlkwc{legend.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{),}
+            \hlkwc{legend.position} \hlstd{=} \hlstr{"bottom"}\hlstd{)}
+        \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{geom_point}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= true,}
+            \hlkwc{y} \hlstd{= value,} \hlkwc{col} \hlstd{= variable),} \hlkwc{data} \hlstd{= plot_df,}
+            \hlkwc{size} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{2.5}\hlstd{),} \hlkwc{shape} \hlstd{=} \hlkwd{I}\hlstd{(}\hlnum{1}\hlstd{))}
+        \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{labs}\hlstd{(}\hlkwc{color} \hlstd{=} \hlstr{"Algorithm"}\hlstd{)} \hlopt{+}
+            \hlkwd{scale_color_manual}\hlstd{(}\hlkwc{labels} \hlstd{= algo_names,}
+                \hlkwc{values} \hlstd{= algo_colors)}
         \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{xlim}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{)}
         \hlstd{ggplot} \hlkwb{=} \hlstd{ggplot} \hlopt{+} \hlkwd{ylim}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{)}
         \hlkwd{return}\hlstd{(ggplot)}
@@ -189,18 +222,25 @@
 
         \hlstd{errdf} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{`Our Algorithm`} \hlstd{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{my_ests_lin} \hlopt{-}
             \hlstd{df}\hlopt{$}\hlstd{true),} \hlkwc{check.names} \hlstd{=} \hlnum{FALSE}\hlstd{)}
-        \hlstd{errdf[}\hlstr{"DSA"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{dsa} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"Least Squares"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{lsfit} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"Quad. Prog."}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{qprog} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"ssKL"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{sskl} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"ssFrobenius"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{ssf} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"DSA"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{dsa} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"Least Squares"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{lsfit} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"Quad. Prog."}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{qprog} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"ssKL"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{sskl} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"ssFrobenius"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{ssf} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
 
-        \hlstd{p} \hlkwb{=} \hlkwd{ggplot}\hlstd{(}\hlkwd{stack}\hlstd{(errdf),} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= ind,} \hlkwc{y} \hlstd{= values))} \hlopt{+}
-            \hlkwd{geom_boxplot}\hlstd{()} \hlopt{+} \hlstd{yl} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Error of Estimated Proportions"}\hlstd{)} \hlopt{+}
+        \hlstd{p} \hlkwb{=} \hlkwd{ggplot}\hlstd{(}\hlkwd{stack}\hlstd{(errdf),} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= ind,}
+            \hlkwc{y} \hlstd{= values))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}
+            \hlstd{yl} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Error of Estimated Proportions"}\hlstd{)} \hlopt{+}
             \hlkwd{labs}\hlstd{(}\hlkwc{x} \hlstd{=} \hlstr{"Algorithm"}\hlstd{,} \hlkwc{y} \hlstd{=} \hlstr{"Error of Estimated Proportions"}\hlstd{)} \hlopt{+}
-            \hlkwd{theme}\hlstd{(}\hlkwc{axis.text} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{),} \hlkwc{axis.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,}
-                \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),} \hlkwc{plot.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,}
-                \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),} \hlkwc{legend.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{),}
+            \hlkwd{theme}\hlstd{(}\hlkwc{axis.text} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{),}
+                \hlkwc{axis.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,}
+                  \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),} \hlkwc{plot.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{,}
+                  \hlkwc{face} \hlstd{=} \hlstr{"bold"}\hlstd{),} \hlkwc{legend.title} \hlstd{=} \hlkwd{element_text}\hlstd{(}\hlkwc{size} \hlstd{=} \hlnum{10}\hlstd{),}
                 \hlkwc{legend.position} \hlstd{=} \hlstr{"bottom"}\hlstd{)}
 
         \hlkwd{return}\hlstd{(p)}
@@ -223,18 +263,24 @@
 
         \hlstd{errdf} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{`Our Algorithm`} \hlstd{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{my_ests_lin} \hlopt{-}
             \hlstd{df}\hlopt{$}\hlstd{true),} \hlkwc{check.names} \hlstd{=} \hlnum{FALSE}\hlstd{)}
-        \hlstd{errdf[}\hlstr{"DSA"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{dsa} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"Least Squares"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{lsfit} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"Quad. Prog."}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{qprog} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"ssKL"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{sskl} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
-        \hlstd{errdf[}\hlstr{"ssFrobenius"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{ssf} \hlopt{-} \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"DSA"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{dsa} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"Least Squares"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{lsfit} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"Quad. Prog."}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{qprog} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"ssKL"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{sskl} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
+        \hlstd{errdf[}\hlstr{"ssFrobenius"}\hlstd{]} \hlkwb{=} \hlkwd{transform}\hlstd{(df}\hlopt{$}\hlstd{ssf} \hlopt{-}
+            \hlstd{df}\hlopt{$}\hlstd{true)}
 
         \hlstd{qs} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{0.25}\hlstd{,} \hlnum{0.5}\hlstd{,} \hlnum{0.75}\hlstd{,} \hlnum{1}\hlstd{)}
         \hlstd{tbl} \hlkwb{=} \hlkwd{round}\hlstd{(}\hlkwd{apply}\hlstd{(errdf,} \hlnum{2}\hlstd{,} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
             \hlkwd{quantile}\hlstd{(x, )}
         \hlstd{\}),} \hlnum{3}\hlstd{)}
         \hlkwd{colnames}\hlstd{(tbl)[}\hlnum{1}\hlstd{]} \hlkwb{=} \hlstr{"Our Algorithm"}
-        \hlstd{tbl} \hlkwb{=} \hlkwd{cbind}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlkwd{round}\hlstd{(qs} \hlopt{*} \hlnum{100}\hlstd{),} \hlstr{"%"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{), tbl)}
+        \hlstd{tbl} \hlkwb{=} \hlkwd{cbind}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlkwd{round}\hlstd{(qs} \hlopt{*} \hlnum{100}\hlstd{),}
+            \hlstr{"%"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{), tbl)}
         \hlkwd{colnames}\hlstd{(tbl)[}\hlnum{1}\hlstd{]} \hlkwb{=} \hlstr{"Percentile"}
         \hlkwd{rownames}\hlstd{(tbl)} \hlkwb{=} \hlkwa{NULL}
 

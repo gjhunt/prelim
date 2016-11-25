@@ -1,13 +1,13 @@
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
- \hlcom{## ----chap4-fig1,eval=TRUE,cache=TRUE,echo=FALSE,warnin...}
+ \hlcom{## ----chap4-fig1,eval=TRUE,cache=TR...}
 \hlkwd{source}\hlstd{(}\hlstr{"./latin_R/chap4-fig1.R"}\hlstd{)}
 
-\hlcom{## ----chap4-fig2,eval=TRUE,cache=TRUE,echo=FALSE,warnin...}
+\hlcom{## ----chap4-fig2,eval=TRUE,cache=TR...}
 \hlkwd{source}\hlstd{(}\hlstr{"./latin_R/chap4-fig2.R"}\hlstd{)}
 
-\hlcom{## ----chap4-fig3,eval=TRUE,cache=TRUE,echo=FALSE,warnin...}
+\hlcom{## ----chap4-fig3,eval=TRUE,cache=TR...}
 \hlkwd{source}\hlstd{(}\hlstr{"./latin_R/chap4-fig3.R"}\hlstd{)}
 \end{alltt}
 \end{kframe}

@@ -31,7 +31,8 @@
 
     \hlstd{curr_dir} \hlkwb{=} \hlkwd{getwd}\hlstd{()}
     \hlstd{geo_data_dir} \hlkwb{=} \hlstr{"/home/greg/Dropbox/work/research/2016/geo_data"}
-    \hlstd{this_data_dir} \hlkwb{=} \hlkwd{paste}\hlstd{(geo_data_dir,} \hlstr{"/"}\hlstd{, geo_acc,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+    \hlstd{this_data_dir} \hlkwb{=} \hlkwd{paste}\hlstd{(geo_data_dir,} \hlstr{"/"}\hlstd{,}
+        \hlstd{geo_acc,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
 
     \hlkwa{if} \hlstd{(}\hlopt{!}\hlkwd{dir.exists}\hlstd{(this_data_dir)) \{}
         \hlkwd{dir.create}\hlstd{(this_data_dir)}
@@ -53,16 +54,18 @@
             \hlkwd{which}\hlstd{(x} \hlopt{==} \hlnum{1}\hlstd{)[}\hlnum{1}\hlstd{]}
         \hlstd{\})}
         \hlstd{pure} \hlkwb{=} \hlstd{ones[}\hlopt{!}\hlkwd{is.na}\hlstd{(ones)]}
-        \hlkwd{return}\hlstd{(}\hlkwd{lapply}\hlstd{(}\hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(}\hlkwd{unique}\hlstd{(pure)),} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
-            \hlkwd{which}\hlstd{(pure} \hlopt{==} \hlstd{x)}
-        \hlstd{\}))}
+        \hlkwd{return}\hlstd{(}\hlkwd{lapply}\hlstd{(}\hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(}\hlkwd{unique}\hlstd{(pure)),}
+            \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+                \hlkwd{which}\hlstd{(pure} \hlopt{==} \hlstd{x)}
+            \hlstd{\}))}
     \hlstd{\}}
 
     \hlstd{pure_samples} \hlkwb{=} \hlkwd{get_pure}\hlstd{(conv)}
     \hlkwd{names}\hlstd{(pure_samples)} \hlkwb{=} \hlkwd{colnames}\hlstd{(conv)}
 
-    \hlkwd{return}\hlstd{(}\hlkwd{list}\hlstd{(}\hlkwc{affy_batch} \hlstd{= affy_batch,} \hlkwc{pure_samples} \hlstd{= pure_samples,}
-        \hlkwc{conv} \hlstd{= conv,} \hlkwc{cellmix} \hlstd{= cmData))}
+    \hlkwd{return}\hlstd{(}\hlkwd{list}\hlstd{(}\hlkwc{affy_batch} \hlstd{= affy_batch,}
+        \hlkwc{pure_samples} \hlstd{= pure_samples,} \hlkwc{conv} \hlstd{= conv,}
+        \hlkwc{cellmix} \hlstd{= cmData))}
 \hlstd{\}}
 \end{alltt}
 \end{kframe}

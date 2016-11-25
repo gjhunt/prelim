@@ -12,13 +12,15 @@
     \hlstd{\}}
     \hlstd{ord} \hlkwb{=} \hlkwd{order}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{ls}\hlstd{(envir), os),} \hlkwc{decreasing} \hlstd{=} \hlnum{TRUE}\hlstd{)}
     \hlkwd{print}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{ls}\hlstd{(envir), os_pretty)[ord])}
-    \hlkwd{cat}\hlstd{(}\hlstr{"Total: "}\hlstd{,} \hlkwd{sum}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{ls}\hlstd{(envir), os))} \hlopt{*} \hlnum{1e-09}\hlstd{,} \hlstr{"Gb \textbackslash{}n"}\hlstd{)}
+    \hlkwd{cat}\hlstd{(}\hlstr{"Total: "}\hlstd{,} \hlkwd{sum}\hlstd{(}\hlkwd{sapply}\hlstd{(}\hlkwd{ls}\hlstd{(envir),}
+        \hlstd{os))} \hlopt{*} \hlnum{1e-09}\hlstd{,} \hlstr{"Gb \textbackslash{}n"}\hlstd{)}
 \hlstd{\}}
 
 
 \hlstd{VERBOSE} \hlkwb{=} \hlnum{TRUE}
 \hlstd{TIME} \hlkwb{=} \hlkwd{Sys.time}\hlstd{()}
-\hlstd{updt} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{msg} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{init} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{done} \hlstd{=} \hlnum{FALSE}\hlstd{) \{}
+\hlstd{updt} \hlkwb{=} \hlkwa{function}\hlstd{(}\hlkwc{msg} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{init} \hlstd{=} \hlnum{FALSE}\hlstd{,}
+    \hlkwc{done} \hlstd{=} \hlnum{FALSE}\hlstd{) \{}
     \hlkwa{if} \hlstd{(}\hlkwd{is.null}\hlstd{(msg))}
         \hlstd{done} \hlkwb{=} \hlnum{TRUE}
     \hlkwa{if} \hlstd{(VERBOSE) \{}
@@ -32,11 +34,12 @@
             \hlstd{TIME} \hlkwb{<<-} \hlstd{t2}
             \hlstd{FIRST} \hlkwb{<<-} \hlstd{t2}
         \hlstd{\}}
-        \hlstd{MSG} \hlkwb{=} \hlkwd{paste}\hlstd{(msg,} \hlstr{" ("}\hlstd{,} \hlkwd{format}\hlstd{(t2} \hlopt{-} \hlstd{FIRST,} \hlkwc{digits} \hlstd{=} \hlnum{1}\hlstd{),}
-            \hlstr{" ellapsed)"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+        \hlstd{MSG} \hlkwb{=} \hlkwd{paste}\hlstd{(msg,} \hlstr{" ("}\hlstd{,} \hlkwd{format}\hlstd{(t2} \hlopt{-}
+            \hlstd{FIRST,} \hlkwc{digits} \hlstd{=} \hlnum{1}\hlstd{),} \hlstr{" ellapsed)"}\hlstd{,}
+            \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
         \hlstd{TIME} \hlkwb{<<-} \hlstd{t2}
-        \hlkwd{cat}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlkwd{blue}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"["}\hlstd{, t2,} \hlstr{"] "}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)), MSG,}
-            \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{),} \hlstr{"\textbackslash{}n"}\hlstd{)}
+        \hlkwd{cat}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlkwd{blue}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"["}\hlstd{, t2,} \hlstr{"] "}\hlstd{,}
+            \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)), MSG,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{),} \hlstr{"\textbackslash{}n"}\hlstd{)}
         \hlkwd{return}\hlstd{(MSG)}
     \hlstd{\}}
     \hlkwd{return}\hlstd{(}\hlstr{""}\hlstd{)}

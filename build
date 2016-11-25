@@ -6,7 +6,7 @@ library('formatR')
 source_code = function(R_file){
     cat(red(paste('Sourcing code for',R_file)),"\n")
     dir = "append_code/"
-    ml = 60
+    ml = 40
     ts = tidy_source(R_file,width.cutoff=ml,output=FALSE)$text.tidy
 
     if(length(ts)>0){

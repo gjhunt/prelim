@@ -1,37 +1,43 @@
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
- \hlcom{## ----plot1,cache=FALSE,warning=FALSE,echo=FALSE,error=...}
+ \hlcom{## ----plot1,cache=FALSE,warning=FAL...}
 \hlkwd{source}\hlstd{(}\hlstr{"./R/Analysis_script.R"}\hlstd{,} \hlkwc{chdir} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{)}
+\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,}
+    \hlnum{FALSE}\hlstd{)}
 \hlkwd{aplot}\hlstd{(}\hlnum{19830}\hlstd{,} \hlstr{"diag"}\hlstd{, sel)}
 
-\hlcom{## ----plot2,cache=FALSE,warning=FALSE,echo=FALSE,error=...}
+\hlcom{## ----plot2,cache=FALSE,warning=FAL...}
 \hlkwd{source}\hlstd{(}\hlstr{"./R/Analysis_script.R"}\hlstd{,} \hlkwc{chdir} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{)}
+\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,}
+    \hlnum{FALSE}\hlstd{)}
 \hlkwd{aplot}\hlstd{(}\hlnum{19830}\hlstd{,} \hlstr{"err_boxplot"}\hlstd{, sel)}
 
-\hlcom{## ----table1,cache=FALSE,warning=FALSE,echo=FALSE,error...}
+\hlcom{## ----table1,cache=FALSE,warning=FA...}
 \hlkwd{library}\hlstd{(}\hlstr{"xtable"}\hlstd{)}
 \hlkwd{source}\hlstd{(}\hlstr{"./R/Analysis_script.R"}\hlstd{,} \hlkwc{chdir} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{)}
+\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,}
+    \hlnum{FALSE}\hlstd{)}
 \hlstd{t} \hlkwb{=} \hlkwd{aplot}\hlstd{(}\hlnum{19830}\hlstd{,} \hlstr{"summ"}\hlstd{, sel)}
 \hlkwd{print}\hlstd{(}\hlkwd{xtable}\hlstd{(t),} \hlkwc{include.rownames} \hlstd{=} \hlnum{FALSE}\hlstd{)}
 
-\hlcom{## ----plot3,cache=FALSE,warning=FALSE,echo=FALSE,error=...}
+\hlcom{## ----plot3,cache=FALSE,warning=FAL...}
 \hlkwd{source}\hlstd{(}\hlstr{"./R/Analysis_script.R"}\hlstd{,} \hlkwc{chdir} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{)}
+\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,}
+    \hlnum{FALSE}\hlstd{)}
 \hlkwd{aplot}\hlstd{(}\hlnum{11058}\hlstd{,} \hlstr{"diag"}\hlstd{, sel)}
 
-\hlcom{## ----plot4,cache=FALSE,warning=FALSE,echo=FALSE,error=...}
+\hlcom{## ----plot4,cache=FALSE,warning=FAL...}
 \hlkwd{source}\hlstd{(}\hlstr{"./R/Analysis_script.R"}\hlstd{,} \hlkwc{chdir} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{)}
+\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,}
+    \hlnum{FALSE}\hlstd{)}
 \hlkwd{aplot}\hlstd{(}\hlnum{11058}\hlstd{,} \hlstr{"err_boxplot"}\hlstd{, sel)}
 
-\hlcom{## ----table2,cache=FALSE,warning=FALSE,echo=FALSE,error...}
+\hlcom{## ----table2,cache=FALSE,warning=FA...}
 \hlkwd{library}\hlstd{(}\hlstr{"xtable"}\hlstd{)}
 \hlkwd{source}\hlstd{(}\hlstr{"./R/Analysis_script.R"}\hlstd{,} \hlkwc{chdir} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{)}
+\hlstd{sel} \hlkwb{=} \hlstd{sel} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{TRUE}\hlstd{,} \hlnum{FALSE}\hlstd{,} \hlnum{FALSE}\hlstd{,}
+    \hlnum{FALSE}\hlstd{)}
 \hlstd{t} \hlkwb{=} \hlkwd{aplot}\hlstd{(}\hlnum{11058}\hlstd{,} \hlstr{"summ"}\hlstd{, sel)}
 \hlkwd{print}\hlstd{(}\hlkwd{xtable}\hlstd{(t),} \hlkwc{include.rownames} \hlstd{=} \hlnum{FALSE}\hlstd{)}
 \end{alltt}
