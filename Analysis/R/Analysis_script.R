@@ -168,8 +168,8 @@ aplot = function(num,plot_type,sel=rep(TRUE,5)){
             }
         }
 
-        yl=ylim(-.75,.75)
-        if(abst) yl=ylim(0,.75)
+        yl=ylim(-.6,.6)
+        if(abst) yl=ylim(0,.6)
 
         df = results$df
 

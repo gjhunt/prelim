@@ -28,7 +28,7 @@ get_dset = function(geo_acc_num){
     geo_acc = paste("GSE",geo_acc_num,sep="")
 
     curr_dir = getwd()
-    geo_data_dir = '/home/greg/Dropbox/work/research/2016/geo_data'
+    geo_data_dir = './data'
     this_data_dir = paste(geo_data_dir,"/",geo_acc,sep="")
 
     if(!dir.exists(this_data_dir)){

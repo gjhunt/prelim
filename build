@@ -69,7 +69,7 @@ while(TRUE){
         R_files = R_files[grepl(".R$",R_files)]
 
         toss = sapply(Rnw_files,function(x){purl(x,quiet=TRUE)})
-        toss = sapply(R_files,source_code)
+        #toss = sapply(R_files,source_code)
         
         cat(blue("Running LaTex.\n"))
 	toss = system(paste("rm",aux_fname),intern=TRUE)

@@ -27,11 +27,11 @@
 \contentsline {chap}{\numberline {\hbox { }\hfill \bf 5.\hspace {5pt}}{\bf Analysis on Real Data}}{33}{chapter.5}
 \hbox { }
 \contentsline {section}{\numberline {5.1}Methods and Implementations}{33}{section.5.1}
-\contentsline {section}{\numberline {5.2}The Rat Data Set}{33}{section.5.2}
-\contentsline {section}{\numberline {5.3}The Blood Data set}{33}{section.5.3}
+\contentsline {section}{\numberline {5.2}The Rat Data Set}{34}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Blood Data set}{36}{section.5.3}
 \hbox { }
-\contentsline {chap}{\numberline {\hbox { }\hfill \bf 6.\hspace {5pt}}{\bf Conclusion}}{38}{chapter.6}
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 6.\hspace {5pt}}{\bf Conclusion}}{39}{chapter.6}
 \hbox { }
-\contentsline {section}{\numberline {6.1}Future Work}{38}{section.6.1}
-\contentsline {chapter}{BIBLIOGRAPHY}{39}{section.6.1}
-\contentsline {chapter}{APPENDICES}{41}{section.6.1}
+\contentsline {section}{\numberline {6.1}Future Work}{39}{section.6.1}
+\contentsline {chapter}{BIBLIOGRAPHY}{40}{section.6.1}
+\contentsline {chapter}{APPENDICES}{42}{section.6.1}
