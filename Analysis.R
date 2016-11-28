@@ -3,7 +3,7 @@ library('xtable')
 source('./R/Analysis_script.R',chdir=TRUE)
 sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
 t = aplot(19830,'summ',sel)
-print(xtable(t,caption="Quantiles of the absolute error of mixing proportions.",
+print(xtable(t,caption="Quantiles of the absolute error of predicted mixing proportions.",
              label="tab:rat1"
              ),include.rownames=FALSE)
 
@@ -22,7 +22,7 @@ library('xtable')
 source('./R/Analysis_script.R',chdir=TRUE)
 sel = sel=c(TRUE,FALSE,TRUE,FALSE,FALSE,FALSE)
 t = aplot(11058,'summ',sel)
-print(xtable(t,label="tab:blood",caption="Quantiles of the absolute error of mixing proportions."),include.rownames=FALSE)
+print(xtable(t,label="tab:blood",caption="Quantiles of the absolute error of predicted mixing proportions."),include.rownames=FALSE)
 
 ## ----plot4,cache=FALSE,warning=FALSE,echo=FALSE,error=FALSE,message=FALSE,fig.height=4,fig.width=7----
 source('./R/Analysis_script.R',chdir=TRUE)
