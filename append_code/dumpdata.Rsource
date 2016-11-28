@@ -1,7 +1,0 @@
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
- \hlstd{out} \hlkwb{<-} \hlkwd{character}\hlstd{(}\hlnum{0}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
