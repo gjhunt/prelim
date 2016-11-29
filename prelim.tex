@@ -233,7 +233,7 @@ Professor Kerby Shedden\\
 % Optional in-dissertation Abstract Page
 \startabstractpage{\mytitle}{Greg Hunt}{}
 
-Gene profiling techniques such as DNA microarrays and RNA sequencing are important microbiological tools. Unfortunately their efficacy is often jeopardized by heterogeneous samples. These profiling techniques yield expression measurements for genes. Practitioners often compare these gene expressions measurements across samples. The difference in expressions across samples will be due in part to biological differences in similar cells and in part due to differences in the types of cells comprising each sample. Consequently the differences in sample composition confounds expression changes since we can't distinguish differences in expression coming from biological differences in similar cells and changes in expression arising from different composition of the cell populations in the samples. In order to separate the effects of sample heterogeneity from other biological factors methods of cell type deconvolution have been developed. In this paper we review the literature on such cell type deconvolution algorithms and propose new deconvolution methodology. Our algorithm eschews the prevailing modeling of expressions in heterogeneous samples as convex combinations of expressions in pure samples. Instead we directly model the interaction between the quantity of RNA in a sample and expression measurements in the sample. Using real data we demonstrate that our algorithm has a competitive prediction error with existing methods even though it is much simpler. Finally we discuss the next paths we wish to explore in this line of research. 
+Gene profiling techniques such as DNA microarrays and RNA sequencing are important microbiological tools. Unfortunately their efficacy is often jeopardized by heterogeneous samples. Practitioners often compare gene expressions measurements across samples. The difference in expressions across samples will be due in part to biological differences in similar cells and in part due to differences in the types of cells comprising each sample. Consequently the differences in sample composition confounds expression changes since we can't distinguish differences in expression coming from biological differences in similar cells and changes in expression arising from different composition of the cell populations in the samples. In order to separate the effects of sample heterogeneity from other biological factors methods of cell type deconvolution have been developed. In this paper we review the literature on such cell type deconvolution algorithms and propose new deconvolution methodology. Our algorithm differs the prevailing modeling of expressions in heterogeneous samples as convex combinations of expressions in pure samples. Instead we directly model the interaction between the quantity of RNA in a sample and expression measurements in the sample. Using real data we demonstrate that our algorithm has a competitive prediction error with existing methods even though it is much simpler. Finally we discuss the next paths we wish to explore in this line of research. 
 \label{Abstract}
 
 \startthechapters 
@@ -647,7 +647,7 @@ The first data set we looked at was a data set of mixtures of rat cells from \ci
 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Mon Nov 28 18:30:14 2016
+% Tue Nov 29 15:05:42 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllllll}
@@ -699,7 +699,7 @@ In this figure we plot the estimated proportions for each of the two algorithms 
 While the previous data set showed our algorithm in a very good light we would also like to look at a data set where our algorithm does not do as well. For this we look at data set comprised of mixtures of white blood cell types. This data set comes from \cite{Abbas2009}. The data set is available from GEO with accession key \href{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE11058}{GSE11058}. The data set is a mixture of lines of human immune and memory T cells. Specifically the data set was created by running HG-U133 Plus 2 Affymetrix Human Genome DNA microarrays on mixtures of Jurkat, IM-9, Raji and THP-1 cell lines. Three technical replicates of various mixtures of the cells were analyzed with the DNA microarrays. We used four pure arrays (one for each immune cell type) to select the 1000 marker probes and subsequently marker probesets. Since these arrays were used to train the algorithms they are excluded from the following analyses. We then ran each of the six deconvolution algorithms on the DNA microarray data and estimated the mixing proportions. We display quantiles of the absolute value of the errors of the mixing proportions in Table \ref{tab:blood}.
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Mon Nov 28 18:30:15 2016
+% Tue Nov 29 15:05:43 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllllll}
