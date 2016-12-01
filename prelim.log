@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.17)  29 NOV 2016 15:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.17)  1 DEC 2016 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -889,8 +889,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.267 
-       [3
+l.268 I
+       n slightly more detail, the probe squares will tell us about gene exp...
+[3
 
 ] [4] [5]
 CHAPTER 3.
@@ -927,11 +928,11 @@ Overfull \hbox (58.58412pt too wide) detected at line 452
 \OT1/cmr/m/n/12 Figure 4.2: []
  []
 
-[20] [21 <./figure/chap4-fig1-1.pdf>]
+[20]
 
 Package xcolor Warning: Incompatible color definition on input line 468.
 
-<figure/chap4-fig3-1.pdf, id=399, 361.35pt x 361.35pt>
+<figure/chap4-fig3-1.pdf, id=389, 361.35pt x 361.35pt>
 File: figure/chap4-fig3-1.pdf Graphic file (type pdf)
 <use figure/chap4-fig3-1.pdf>
 Package pdftex.def Info: figure/chap4-fig3-1.pdf used on input line 469.
@@ -941,8 +942,8 @@ Overfull \hbox (58.58412pt too wide) detected at line 472
 \OT1/cmr/m/n/12 Figure 4.3: []
  []
 
-[22 <./figure/chap4-fig2-1.pdf>] [23 <./figure/chap4-fig3-1.pdf>] [24] [25] [26
-] [27] [28] [29]
+[21 <./figure/chap4-fig1-1.pdf>] [22 <./figure/chap4-fig2-1.pdf>] [23 <./figure
+/chap4-fig3-1.pdf>] [24] [25] [26] [27] [28] [29]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 608.
@@ -1032,7 +1033,7 @@ Package rerunfilecheck Info: File `prelim.out' has not changed.
 Here is how much of TeX's memory you used:
  20952 strings out of 493029
  371788 string characters out of 6136233
- 552207 words of memory out of 5000000
+ 552209 words of memory out of 5000000
  23963 multiletter control sequences out of 15000+600000
  14490 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1053,7 +1054,7 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on prelim.pdf (46 pages, 318060 bytes).
+Output written on prelim.pdf (46 pages, 316824 bytes).
 PDF statistics:
  697 PDF objects out of 1000 (max. 8388607)
  612 compressed objects within 7 object streams
