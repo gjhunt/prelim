@@ -3,7 +3,7 @@
 \usepackage{etoolbox}
 \newtoggle{draft}
 \toggletrue{draft}
-\togglefalse{draft}
+%\togglefalse{draft}
 
 
 \usepackage{amsmath}

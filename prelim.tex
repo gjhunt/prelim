@@ -53,7 +53,7 @@
 \usepackage{etoolbox}
 \newtoggle{draft}
 \toggletrue{draft}
-\togglefalse{draft}
+%\togglefalse{draft}
 
 
 \usepackage{amsmath}
@@ -647,7 +647,7 @@ The first data set we looked at was a data set of mixtures of rat cells from \ci
 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec  1 17:11:33 2016
+% Thu Dec  1 17:15:15 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllllll}
@@ -699,7 +699,7 @@ In this figure we plot the estimated proportions for each of the two algorithms 
 While the previous data set showed our algorithm in a very good light we would also like to look at a data set where our algorithm does not do as well. For this we look at data set comprised of mixtures of white blood cell types. This data set comes from \cite{Abbas2009}. The data set is available from GEO with accession key \href{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE11058}{GSE11058}. The data set is a mixture of lines of human immune and memory T cells. Specifically the data set was created by running HG-U133 Plus 2 Affymetrix Human Genome DNA microarrays on mixtures of Jurkat, IM-9, Raji and THP-1 cell lines. Three technical replicates of various mixtures of the cells were analyzed with the DNA microarrays. We used four pure arrays (one for each immune cell type) to select the 1000 marker probes and subsequently marker probesets. Since these arrays were used to train the algorithms they are excluded from the following analyses. We then ran each of the six deconvolution algorithms on the DNA microarray data and estimated the mixing proportions. We display quantiles of the absolute value of the errors of the mixing proportions in Table \ref{tab:blood}.
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec  1 17:11:33 2016
+% Thu Dec  1 17:15:16 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllllll}

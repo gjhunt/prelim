@@ -17,20 +17,20 @@
 \contentsline {chap}{\numberline {\hbox { }\hfill \bf 4.\hspace {5pt}}{\bf Our Method}}{16}{chapter.4}
 \hbox { }
 \contentsline {section}{\numberline {4.1}A Basic Example}{16}{section.4.1}
-\contentsline {section}{\numberline {4.2}Concentrations and Expressions}{20}{section.4.2}
-\contentsline {section}{\numberline {4.3}A General Model}{24}{section.4.3}
-\contentsline {section}{\numberline {4.4}Comparison}{27}{section.4.4}
-\contentsline {section}{\numberline {4.5}Estimating $\gamma $ and Choosing Markers.}{30}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Estimating $\gamma $}{30}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Choosing Markers}{31}{subsection.4.5.2}
+\contentsline {section}{\numberline {4.2}Concentrations and Expressions}{19}{section.4.2}
+\contentsline {section}{\numberline {4.3}A General Model}{23}{section.4.3}
+\contentsline {section}{\numberline {4.4}Comparison}{26}{section.4.4}
+\contentsline {section}{\numberline {4.5}Estimating $\gamma $ and Choosing Markers.}{29}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Estimating $\gamma $}{29}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Choosing Markers}{30}{subsection.4.5.2}
 \hbox { }
-\contentsline {chap}{\numberline {\hbox { }\hfill \bf 5.\hspace {5pt}}{\bf Analysis on Real Data}}{33}{chapter.5}
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 5.\hspace {5pt}}{\bf Analysis on Real Data}}{32}{chapter.5}
 \hbox { }
-\contentsline {section}{\numberline {5.1}Methods and Implementations}{33}{section.5.1}
-\contentsline {section}{\numberline {5.2}The Rat Data Set}{34}{section.5.2}
-\contentsline {section}{\numberline {5.3}The Blood Data set}{36}{section.5.3}
+\contentsline {section}{\numberline {5.1}Methods and Implementations}{32}{section.5.1}
+\contentsline {section}{\numberline {5.2}The Rat Data Set}{33}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Blood Data set}{34}{section.5.3}
 \hbox { }
-\contentsline {chap}{\numberline {\hbox { }\hfill \bf 6.\hspace {5pt}}{\bf Conclusion}}{39}{chapter.6}
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf 6.\hspace {5pt}}{\bf Conclusion}}{38}{chapter.6}
 \hbox { }
-\contentsline {chapter}{BIBLIOGRAPHY}{40}{chapter.6}
-\contentsline {chapter}{APPENDICES}{42}{chapter.6}
+\contentsline {chapter}{BIBLIOGRAPHY}{39}{chapter.6}
+\contentsline {chapter}{APPENDICES}{41}{chapter.6}
